@@ -2,12 +2,11 @@ import UIKit
 import func AVFoundation.AVMakeRect
 
 extension UIImage {
-    func modelImage() -> UIImage? {
+    func modelImage(
+        with size: CGSize
+    ) -> UIImage? {
         resize(
-            to: CGSize(
-                width: 28,
-                height: 28
-            )
+            to: size
         )?
         .grayscale()
     }

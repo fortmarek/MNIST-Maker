@@ -3,6 +3,7 @@ import PencilKit
 
 struct MNISTMakerView: View {
     @State var canvasView: PKCanvasView = .init()
+    @State var size: Int? = 28
     
     var body: some View {
         VStack {
@@ -13,11 +14,22 @@ struct MNISTMakerView: View {
                 .border(Color.white)
                 .padding()
             }
-            HStack(alignment: .top) {
+            HStack(alignment: .center) {
                 Button("Export") {
                     export()
                     canvasView.drawing = .init()
                 }
+                Text("Size " + (size.map(String.init) ?? "") + " x")
+                TextEditor(
+                    text: Binding(
+                        get: { size.map(String.init) ?? "" },
+                        set: { size = Int($0) }
+                    )
+                )
+                .multilineTextAlignment(.center)
+                .lineLimit(1)
+                .border(Color.white)
+                .frame(width: 50, height: 30)
             }
         }
     }
@@ -29,7 +41,9 @@ struct MNISTMakerView: View {
             from: canvasView.drawing.bounds,
             scale: 1.0
         )
-        .modelImage()
+        .modelImage(
+            with: size.map { CGSize(width: $0, height: $0) } ?? CGSize(width: 28, height: 28)
+        )
         .map(savePNG)
     }
     
