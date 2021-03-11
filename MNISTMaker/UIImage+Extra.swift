@@ -1,9 +1,10 @@
 import UIKit
+import func AVFoundation.AVMakeRect
 
 extension UIImage {
     func modelImage() -> UIImage? {
         resize(
-            newSize: CGSize(
+            to: CGSize(
                 width: 28,
                 height: 28
             )
@@ -11,10 +12,15 @@ extension UIImage {
         .grayscale()
     }
     
-    func resize(newSize: CGSize) -> UIImage? {
+    func resize(to newSize: CGSize) -> UIImage? {
         UIGraphicsImageRenderer(size: newSize)
             .image { _ in
-                draw(in: CGRect(origin: .zero, size: newSize))
+                draw(
+                    in: AVMakeRect(
+                        aspectRatio: size,
+                        insideRect: CGRect(origin: .zero, size: newSize)
+                    )
+                )
             }
     }
     

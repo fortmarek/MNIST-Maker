@@ -1,7 +1,5 @@
 import SwiftUI
-import Vision
 import PencilKit
-import ComposableArchitecture
 
 struct MNISTMakerView: View {
     @State var canvasView: PKCanvasView = .init()

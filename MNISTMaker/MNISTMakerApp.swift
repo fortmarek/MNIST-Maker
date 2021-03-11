@@ -1,5 +1,4 @@
 import SwiftUI
-import ComposableArchitecture
 
 @main
 struct AutomataEditorApp: App {
