@@ -2,7 +2,7 @@
 
 MNIST Maker is an easy-to-use app that you can use to create a dataset for your machine learning model using MNIST-like dataset! 🤖
 
-It works with a either a finger or Apple Pencil.
+It works with either a finger or Apple Pencil ✏️
 
 ![Preview](preview.gif)
 
